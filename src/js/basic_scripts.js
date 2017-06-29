@@ -22,89 +22,7 @@ function scrollUp(block,targetBlock) {
     });
 }
 
-function oneHeightItems(){
 
-    function oneHeight(block, options){
-
-        var timer = null;
-
-        var params = {
-            notebook:false,
-            macBook:false,
-            iPadHorizontal:false,
-            iPadVertical:false,
-            iPhoneHorizontal:false,
-            iPhoneVertical:false,
-            phoneHorizontal:false
-        };
-
-        $.extend(params, options);
-
-        function calcOneHeight(){
-
-            clearTimeout(timer);
-
-            var height=0;
-            $(block).removeAttr('style');
-
-            var calcHeight = false;
-            var windowWidth = $(window).width();
-
-            if(windowWidth > 1366){
-                calcHeight = true;
-            }else if(windowWidth <= 1366 && windowWidth > 1280 && params.notebook == true){
-                calcHeight = true;
-            }else if(windowWidth <= 1280 && windowWidth > 1024 && params.macBook == true){
-                calcHeight = true;
-            }else if(windowWidth <= 1024 && windowWidth > 992 && params.ipadHorizontal == true){
-                calcHeight = true;
-            }else if(windowWidth <= 992 && windowWidth > 767 && params.ipadVertical == true){
-                calcHeight = true;
-            }else if(windowWidth <=767 && windowWidth > 666 && params.iPhoneHorizontal == true){
-                calcHeight = true;
-            }else if(windowWidth <= 666 && windowWidth > 479 && params.iPhoneVertical == true){
-                calcHeight = true;
-            }else if(windowWidth <= 479 && params.phoneHorizontal == true){
-                calcHeight = true;
-            }
-
-
-            if(calcHeight == true){
-                timer = setTimeout(function(){
-
-                    $(block).each(function(index){
-                        if($(this).height() > height){
-                            height=$(this).height();
-                        }
-                    });
-
-                    $(block).css('height', height);
-
-                },0);
-            }
-
-        };
-
-        calcOneHeight();
-
-        $(window).load(function(){
-
-            calcOneHeight();
-
-        });
-
-        $(window).resize(function(){
-
-            calcOneHeight();
-
-        });
-
-    }
-    // options:{notebook:false, macBook:false, iPadHorizontal:false, iPadVertical:false, iPhoneHorizontal:false, iPhoneVertical:false, phoneHorizontal:false}
-
-    oneHeight('.oneHeight', {notebook:true, macBook:true});
-
-}
 
 /*scroll animation*/
 function animationBlock(item){
@@ -139,14 +57,7 @@ function animationBlock(item){
 }
 
 /*GO TO href*/
-function goTo(){
-    $('.header-menu a').click(function(e){
-        e.preventDefault();
-        var href = $(this).attr('href');
-        var target = $(href).offset().top-65;
-        $(scroller).animate({scrollTop:target},500);
-    });
-}
+
 
 // cut text script
 

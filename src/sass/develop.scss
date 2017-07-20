@@ -267,22 +267,61 @@ header{z-index:200; position: relative;}
 }
 .partners{padding: 43px 0 24px; background-color: #f1f5f6;
     h2{margin: 1.85em 0 0.56em;}
-    p{ text-align: center; max-width: 620px; margin: 0 auto 95px; width: 100%;}
-    &__wrap{ display: flex; justify-content: center; align-items: center; flex-wrap: wrap;}
-    &__item{ position: relative; display: flex; justify-content: center; align-items: center; margin: 0 5px;
+    p{ text-align: center; max-width: 620px; margin: 0 auto 60px; width: 100%;}
+    &__wrap{     padding-left: 40px; padding-right: 40px;padding-top: 20px; display: flex; justify-content: center; align-items: center; flex-wrap: wrap;}
+    &__wrap .slick-list{
+        max-width: 925px;
+    }
+    &__slide.slick-slide{ display: block; height: 105px;}
+    &__item{ height: 100%; position: relative; display: flex; justify-content: center; align-items: center; margin: 0 5px;
         &:hover{
             .partners__img{ opacity: 0;
                 &--h{opacity: 1; transform:scale(1.1);}
             }
         }
     }
+    &__slide.slick-current{
+        .partners__img{ opacity: 0;
+            &--h{opacity: 1; transform:scale(1.1);}
+        }
+    }
     &__img{transition: all 200ms;
-
         &--h{ position: absolute; opacity: 0; transform:scale(1); }
     }
 }
+.slick-arrow.slick-disabled{opacity: 0.5}
+.slick-arrow{position: absolute;}
+.wrap-btn-prev{left: 0;}
+.btn_slider{ position: relative; height: 50px; width: 50px; border: 2px solid #57d0f8; border-radius: 50%; cursor: pointer;
+        &:before{ content: ''; display: block; border-top: 3px solid #57d0f8;cursor: pointer;border-left: 3px solid #57d0f8;position: absolute; margin: 0 auto; }
+}
+.btn-prev{ 
+    &:before{ height: 17px; width: 17px; -ms-transform: rotate(-45deg); transform: rotate(-45deg);top: 15px; margin-right: 5px; left: initial; right: 6px;}
+}
+.btn-next{
+    &:before{transform: rotate(135deg); height: 17px; width: 17px;top: 15px; margin-right: 5px; right: 14px; left: 0;}
+}
+.partners-info__content.active{display: block;}
+.partners-info{  background: #f1f5f6; position: relative;
+    &:before{left: 0;}
+    &:after{right: 0;}
+    &:before,
+    &:after{ content: ''; display: block; position: absolute;  width: 50%; top: 94px; height: calc(100% - 190px); background: #fff;}
+    &__bg{position: relative; height: calc(100% - 190px); z-index: 1;
+        &:before{content: ''; display: block; position: absolute; background: url('../images/cloud2.png') no-repeat center; background-position-x: 0; height: 100%; left: 0; top:0; width: 50%;}
+        &:after{content: ''; display: block; position: absolute; background: url('../images/cloud1.png') no-repeat center; background-position-x: 100%; height: 100%; right: 0; top:0; width: 50%;}
+    }
+    &__content{ display:none; background: #fff; padding: 47px 50px; box-shadow: 0px 9px 49px 0px rgba(88, 121, 131, 0.29);
+        img{float: right; margin: 8px 10px 20px 20px;}
+    }
+    p{ font-size: 16px; margin: 26px 0 54px; line-height: 1.5;  }
+    &__title{color: #34c8f8; display: block; font-weight: bold; font-size: 21px; padding-bottom: 20px; position: relative;
+        &:after{content: ''; display: block; position: absolute; height: 1px; width: 100%; max-width: 470px; bottom: 0; background: #cccccc;}
+     }
+}
+.wrap-btn-next{right: 0;}
 .fancybox-enabled{ padding-right: 15px;}
-.form{ background-color: #f1f5f6; position: relative;
+.form{ background-color: #f1f5f6; position: relative; padding-top: 90px;
 
     &:before{ width: 100%; position: absolute; height:calc(100% - 307px); left: 0; bottom: 0; content: ''; background-color: #2a313e;}
     &__input{ padding-top: 4px; margin-bottom: 34px;
@@ -410,4 +449,7 @@ header{z-index:200; position: relative;}
     .top-block__help:before{ top: -20px; left: -20px; box-shadow: 0 0 12px 0; border-radius: 50%;}
     .why__item{ width: 100%;}
     .video__slide{ height: 150px;}
+    .btn_slider{ height: 40px; width: 40px;}
+    .btn-next:before{ height: 14px; width: 14px; top: 12px; right: 9px;}
+    .btn-prev:before{ height: 14px; width: 14px; top: 12px; right: 4px;}
 }

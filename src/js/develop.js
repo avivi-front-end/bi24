@@ -65,13 +65,17 @@ $(document).ready(function () {
     var getAttr = $(".partners__slide").eq(currentSlide).attr('data-partners');
     $('#'+getAttr).addClass("active");
   });
-  $('.partners__slide').on('click', function(event, slick, currentSlide, nextSlide){   
-    event.preventDefault();
-     $('.partners-info__content').removeClass('active');
-    var getAttr = $(this).attr('data-partners');
-    $('#'+getAttr).addClass("active");
 
-  });
     butterClick();
     $('.form__select select').styler({selectSmartPositioning:false});
 })
+$(document).on('click', '.partners__slide', function(event, slick, currentSlide, nextSlide){   
+    event.preventDefault();
+
+    $('.partners-info__content').removeClass('active');
+
+    var getAttr = $(this).attr('data-partners');
+    var slidergoto = $(this).attr('data-slick-index')
+    $('#'+getAttr).addClass("active");
+    $('.partners__wrap').slick('slickGoTo', slidergoto);
+  });

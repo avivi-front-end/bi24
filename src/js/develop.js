@@ -46,17 +46,32 @@ $(document).ready(function () {
     showMoreSkill();
     goTo();
     $('.partners__wrap').slick({
-        slidesToShow: 8,
-
+        slidesToShow: 5,
+        infinite: false,
+        autopla: false,
+        arrows: true,
+        nextArrow:'<div class="wrap-btn-next"><div class="btn_slider btn-next"></div></div>',
+        prevArrow:'<div class="wrap-btn-prev"><div class="btn_slider btn-prev"></div></div>', 
         responsive: [
-            { breakpoint: 1100,settings: {slidesToShow: 6 } },
-            { breakpoint: 992,settings: {slidesToShow: 5 } },
-            { breakpoint: 710,settings: {slidesToShow: 4 } },
-            { breakpoint: 610,settings: {slidesToShow: 3 } },
-
-
+            { breakpoint: 1100,settings: {slidesToShow: 4 } },
+            { breakpoint: 992,settings: {slidesToShow: 3 } },
+            { breakpoint: 710,settings: {slidesToShow: 3 } },
+            { breakpoint: 610,settings: {slidesToShow: 2 } },
         ]
     });
+
+    $('.partners__wrap').on('afterChange', function(event, slick, currentSlide, nextSlide){   
+    $('.partners-info__content').removeClass('active');
+    var getAttr = $(".partners__slide").eq(currentSlide).attr('data-partners');
+    $('#'+getAttr).addClass("active");
+  });
+  $('.partners__slide').on('click', function(event, slick, currentSlide, nextSlide){   
+    event.preventDefault();
+     $('.partners-info__content').removeClass('active');
+    var getAttr = $(this).attr('data-partners');
+    $('#'+getAttr).addClass("active");
+
+  });
     butterClick();
     $('.form__select select').styler({selectSmartPositioning:false});
 })
